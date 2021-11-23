@@ -14,10 +14,9 @@ namespace Maket_PZ
         {
             InitializeComponent();
             ToolTip t = new ToolTip();
-            t.SetToolTip(CitySize, "Чисельність населення на даний момент");
-            //t.SetToolTip(dateTimePicker, "Дата кінця побудови графіка");
-            CitySize.ForeColor = Color.Gray;
-            CitySize.Font = new Font("Constantia", 10, FontStyle.Italic);
+            t.SetToolTip(Days_future, "Кількість прогнозованих днів");
+            Days_future.ForeColor = Color.Gray;
+            Days_future.Font = new Font("Constantia", 10, FontStyle.Italic);
             //dateTimePicker.CustomFormat = "M.yyyy";
             //dateTimePicker.MinDate = DateTime.Today;
             //dateTimePicker.Value = DateTime.Today;
@@ -73,21 +72,21 @@ namespace Maket_PZ
 
         private void textBox1_Enter(object sender, EventArgs e)
         {
-            if (CitySize.ForeColor == Color.Gray)
+            if (Days_future.ForeColor == Color.Gray)
             {
-                CitySize.Text = "";
-                CitySize.Font = new Font("Franklin Gothic", 10, FontStyle.Regular);
-                CitySize.ForeColor = Color.Black;
+                Days_future.Text = "";
+                Days_future.Font = new Font("Franklin Gothic", 10, FontStyle.Regular);
+                Days_future.ForeColor = Color.Black;
             }
         }
 
         private void textBox1_Leave(object sender, EventArgs e)
         {
-            if (CitySize.Text == "")
+            if (Days_future.Text == "")
             {
-                CitySize.ForeColor = Color.Gray;
-                CitySize.Font = new Font("Constantia", 10, FontStyle.Italic);
-                CitySize.Text = "чис. населення";
+                Days_future.ForeColor = Color.Gray;
+                Days_future.Font = new Font("Constantia", 10, FontStyle.Italic);
+                Days_future.Text = "кількість днів";
             }
         }
 
@@ -113,13 +112,47 @@ namespace Maket_PZ
             if (Diagram_radio.Checked)
             {
                 ChartStart.Text = "Побудувати діаграму";
-                label2.Text = "Колір діаграми";
+                comboBox.Enabled = true;
+                comboBox.Visible = true;
+                Days_future.Enabled = false;
+                Days_future.Visible = false;
             }
             else
             {
                 ChartStart.Text = "Побудувати графiк";
-                label2.Text = "Колір графіка";
+                comboBox.Enabled = false;
+                comboBox.Visible = false;
+                Days_future.Enabled = true;
+                Days_future.Visible = true;
             }
+        }
+
+        private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox.SelectedIndex == 0)
+                diagram.Palette = ChartColorPalette.BrightPastel;
+            else if (comboBox.SelectedIndex == 1)
+                diagram.Palette = ChartColorPalette.Bright;
+            else if (comboBox.SelectedIndex == 2)
+                diagram.Palette = ChartColorPalette.Grayscale;
+            else if (comboBox.SelectedIndex == 3)
+                diagram.Palette = ChartColorPalette.Excel;
+            else if (comboBox.SelectedIndex == 4)
+                diagram.Palette = ChartColorPalette.Light;
+            else if (comboBox.SelectedIndex == 5)
+                diagram.Palette = ChartColorPalette.Pastel;
+            else if (comboBox.SelectedIndex == 6)
+                diagram.Palette = ChartColorPalette.EarthTones;
+            else if (comboBox.SelectedIndex == 7)
+                diagram.Palette = ChartColorPalette.SemiTransparent;
+            else if (comboBox.SelectedIndex == 8)
+                diagram.Palette = ChartColorPalette.Berry;
+            else if (comboBox.SelectedIndex == 9)
+                diagram.Palette = ChartColorPalette.Chocolate;
+            else if (comboBox.SelectedIndex == 10)
+                diagram.Palette = ChartColorPalette.Fire;
+            else
+                diagram.Palette = ChartColorPalette.SeaGreen;
         }
     }
 }

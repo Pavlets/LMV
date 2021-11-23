@@ -29,21 +29,22 @@ namespace Maket_PZ
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuMed));
             this.ChartStart = new System.Windows.Forms.Button();
             this.Factors = new System.Windows.Forms.Button();
             this.Exit = new System.Windows.Forms.Button();
             this.diagram = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.CitySize = new System.Windows.Forms.TextBox();
+            this.Days_future = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.color_change = new System.Windows.Forms.Button();
             this.Diagram_radio = new System.Windows.Forms.RadioButton();
             this.Chart_radio = new System.Windows.Forms.RadioButton();
+            this.comboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.diagram)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,48 +106,50 @@ namespace Maket_PZ
             this.diagram.BorderlineColor = System.Drawing.Color.Black;
             this.diagram.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             this.diagram.BorderlineWidth = 2;
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            chartArea1.AxisY.Minimum = 0D;
-            chartArea1.Name = "ChartArea1";
-            this.diagram.ChartAreas.Add(chartArea1);
+            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            chartArea3.AxisY.Minimum = 0D;
+            chartArea3.Name = "ChartArea1";
+            this.diagram.ChartAreas.Add(chartArea3);
             this.diagram.Cursor = System.Windows.Forms.Cursors.IBeam;
-            legend1.BorderColor = System.Drawing.Color.Black;
-            legend1.BorderWidth = 2;
-            legend1.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            legend1.IsTextAutoFit = false;
-            legend1.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend1.Name = "Legend1";
-            this.diagram.Legends.Add(legend1);
+            legend3.BorderColor = System.Drawing.Color.Black;
+            legend3.BorderWidth = 2;
+            legend3.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            legend3.IsTextAutoFit = false;
+            legend3.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend3.Name = "Legend1";
+            this.diagram.Legends.Add(legend3);
             this.diagram.Location = new System.Drawing.Point(205, 19);
             this.diagram.Name = "diagram";
-            this.diagram.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.Color = System.Drawing.Color.Red;
-            series1.Font = new System.Drawing.Font("Franklin Gothic Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.ToolTip = "Чисельність хворих #AXISLABEL - #PERCENT";
-            this.diagram.Series.Add(series1);
+            this.diagram.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.Color = System.Drawing.Color.Red;
+            series3.Font = new System.Drawing.Font("Franklin Gothic Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.ToolTip = "Чисельність хворих #AXISLABEL - #PERCENT";
+            this.diagram.Series.Add(series3);
             this.diagram.Size = new System.Drawing.Size(851, 480);
             this.diagram.TabIndex = 7;
-            title1.Font = new System.Drawing.Font("Constantia", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title1.Name = "Title1";
-            title1.Text = "Діаграма хворих міста";
-            this.diagram.Titles.Add(title1);
+            title3.Font = new System.Drawing.Font("Constantia", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title3.Name = "Title1";
+            title3.Text = "Діаграма хворих міста";
+            this.diagram.Titles.Add(title3);
             // 
-            // CitySize
+            // Days_future
             // 
-            this.CitySize.Font = new System.Drawing.Font("Constantia", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CitySize.Location = new System.Drawing.Point(19, 208);
-            this.CitySize.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.CitySize.Name = "CitySize";
-            this.CitySize.Size = new System.Drawing.Size(166, 28);
-            this.CitySize.TabIndex = 8;
-            this.CitySize.Text = "кількість днів";
-            this.CitySize.Enter += new System.EventHandler(this.textBox1_Enter);
-            this.CitySize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CitySize_KeyDown);
-            this.CitySize.Leave += new System.EventHandler(this.textBox1_Leave);
+            this.Days_future.Enabled = false;
+            this.Days_future.Font = new System.Drawing.Font("Constantia", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Days_future.Location = new System.Drawing.Point(19, 208);
+            this.Days_future.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.Days_future.Name = "Days_future";
+            this.Days_future.Size = new System.Drawing.Size(166, 28);
+            this.Days_future.TabIndex = 8;
+            this.Days_future.Text = "кількість днів";
+            this.Days_future.Visible = false;
+            this.Days_future.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.Days_future.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CitySize_KeyDown);
+            this.Days_future.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // label2
             // 
@@ -155,9 +158,9 @@ namespace Maket_PZ
             this.label2.Location = new System.Drawing.Point(15, 166);
             this.label2.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 22);
+            this.label2.Size = new System.Drawing.Size(136, 22);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Колір діаграми";
+            this.label2.Text = "Колір графіка";
             // 
             // colorDialog
             // 
@@ -202,17 +205,42 @@ namespace Maket_PZ
             this.Chart_radio.Text = "Графік";
             this.Chart_radio.UseVisualStyleBackColor = true;
             // 
+            // comboBox
+            // 
+            this.comboBox.BackColor = System.Drawing.Color.White;
+            this.comboBox.FormattingEnabled = true;
+            this.comboBox.Items.AddRange(new object[] {
+            "Яркий пастель",
+            "Яркий",
+            "Оттенки серого",
+            "Изощрённый",
+            "Свет",
+            "Пастель",
+            "Тона земли",
+            "Полупрозрачный",
+            "Ягода",
+            "Шоколад",
+            "Огонь",
+            "Морской-зелёный"});
+            this.comboBox.Location = new System.Drawing.Point(19, 164);
+            this.comboBox.Name = "comboBox";
+            this.comboBox.Size = new System.Drawing.Size(166, 29);
+            this.comboBox.TabIndex = 17;
+            this.comboBox.Text = "Палітра дiаг.";
+            this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+            // 
             // MenuMed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1076, 575);
+            this.Controls.Add(this.comboBox);
             this.Controls.Add(this.Chart_radio);
             this.Controls.Add(this.Diagram_radio);
             this.Controls.Add(this.color_change);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.CitySize);
+            this.Controls.Add(this.Days_future);
             this.Controls.Add(this.diagram);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.Factors);
@@ -237,11 +265,12 @@ namespace Maket_PZ
         private System.Windows.Forms.Button Factors;
         private System.Windows.Forms.Button Exit;
         private System.Windows.Forms.DataVisualization.Charting.Chart diagram;
-        private System.Windows.Forms.TextBox CitySize;
+        private System.Windows.Forms.TextBox Days_future;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.Button color_change;
         private System.Windows.Forms.RadioButton Diagram_radio;
         private System.Windows.Forms.RadioButton Chart_radio;
+        private System.Windows.Forms.ComboBox comboBox;
     }
 }
