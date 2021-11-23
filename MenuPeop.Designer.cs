@@ -39,7 +39,6 @@ namespace Maket_PZ
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.CitySize = new System.Windows.Forms.TextBox();
-            this.radioButtonDay = new System.Windows.Forms.RadioButton();
             this.radioButtonMonth = new System.Windows.Forms.RadioButton();
             this.radioButtonYear = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -123,6 +122,7 @@ namespace Maket_PZ
             series1.ChartArea = "ChartArea1";
             series1.Font = new System.Drawing.Font("Franklin Gothic Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             series1.Name = "Series1";
+            series1.ToolTip = "Чисельність населення на #VALX рік буде\\nдорівнювати - #VAL";
             this.chart.Series.Add(series1);
             this.chart.Size = new System.Drawing.Size(851, 480);
             this.chart.TabIndex = 7;
@@ -142,18 +142,6 @@ namespace Maket_PZ
             this.CitySize.Text = "чис. населення";
             this.CitySize.Enter += new System.EventHandler(this.textBox1_Enter);
             this.CitySize.Leave += new System.EventHandler(this.textBox1_Leave);
-            // 
-            // radioButtonDay
-            // 
-            this.radioButtonDay.AutoSize = true;
-            this.radioButtonDay.Font = new System.Drawing.Font("Constantia", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButtonDay.Location = new System.Drawing.Point(19, 245);
-            this.radioButtonDay.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.radioButtonDay.Name = "radioButtonDay";
-            this.radioButtonDay.Size = new System.Drawing.Size(60, 25);
-            this.radioButtonDay.TabIndex = 9;
-            this.radioButtonDay.Text = "Дні";
-            this.radioButtonDay.UseVisualStyleBackColor = true;
             // 
             // radioButtonMonth
             // 
@@ -201,7 +189,6 @@ namespace Maket_PZ
             this.Controls.Add(this.label1);
             this.Controls.Add(this.radioButtonYear);
             this.Controls.Add(this.radioButtonMonth);
-            this.Controls.Add(this.radioButtonDay);
             this.Controls.Add(this.CitySize);
             this.Controls.Add(this.chart);
             this.Controls.Add(this.dateTimePicker);
@@ -230,7 +217,6 @@ namespace Maket_PZ
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private System.Windows.Forms.TextBox CitySize;
-        private System.Windows.Forms.RadioButton radioButtonDay;
         private System.Windows.Forms.RadioButton radioButtonMonth;
         private System.Windows.Forms.RadioButton radioButtonYear;
         private System.Windows.Forms.Label label1;

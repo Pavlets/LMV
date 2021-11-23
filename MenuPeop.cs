@@ -39,44 +39,62 @@ namespace Maket_PZ
             if (CitySize.Text != "чис. населення")
             {
                 chart.Series[0].XValueType = ChartValueType.Date;
-                if (radioButtonYear.Checked)
-                {
-                    chart.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy";
-
-                }
-                //chart.ChartAreas[0].AxisX.Minimum = DateTime.Today.ToOADate();
                 chart.Series[0].Points.Clear();
-                
+
                 int city_size = int.Parse(CitySize.Text);
 
                 DateTime time_z = DateTime.Today;
+                time_z = time_z.AddDays(-time_z.Day);
                 if (radioButtonYear.Checked)
-                    while(time_z < dateTimePicker.Value)
+                {
+                    time_z = time_z.AddMonths(-time_z.Month);
+                    chart.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy";
+                    chart.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Years;
+                    chart.ChartAreas[0].AxisX.Interval = 1;
+                    while (time_z < dateTimePicker.Value)
                     {
                         if (city_size < 0)
                             city_size = 0;
                         chart.Series[0].Points.AddXY(time_z, city_size);
                         time_z = time_z.AddYears(1);
+                        for (int j = 1; j <= 12; j++)
+                        {
+                            for (int jj = 0; jj <= Data.p_factor_count; jj++)
+                                if (Data.Factor_p[jj].v_up)
+                                {
+                                    city_size += Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
+                                }
+                                else
+                                {
+                                    city_size -= Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
+                                }
+                            //MessageBox.Show(city_size.ToString());
+                        }
                     }
-
-
-
-                /*for (int i = 1; i <= 365; i++)
+                }
+                else
                 {
-                    for (int j = 0; j <= Data.p_factor_count; j++)
-                        if (Data.Factor_p[j].v_up)
-                        {
-                            city_size += Decimal.ToInt32(city_size * (Data.Factor_p[j].value / 100));
-                        }
-                        else
-                        {
-                            city_size -= Decimal.ToInt32(city_size * (Data.Factor_p[j].value / 100));
-                        }
-
-                    if (city_size < 0)
-                        city_size = 0;
-                    chart.Series[0].Points.AddXY(i, city_size);
-                }*/
+                    chart.ChartAreas[0].AxisX.LabelStyle.Format = "M.yyyy";
+                    chart.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Months;
+                    chart.ChartAreas[0].AxisX.Interval = 1;
+                    while (time_z < dateTimePicker.Value)
+                    {
+                        if (city_size < 0)
+                            city_size = 0;
+                        chart.Series[0].Points.AddXY(time_z, city_size);
+                        time_z = time_z.AddMonths(1);
+                        for (int jj = 0; jj <= Data.p_factor_count; jj++)
+                            if (Data.Factor_p[jj].v_up)
+                            {
+                                city_size += Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
+                            }
+                            else
+                            {
+                                city_size -= Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
+                            }
+                        //MessageBox.Show(city_size.ToString());
+                    }
+                }
             }
             else
                 MessageBox.Show("Введіть чисельність населення міста!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
