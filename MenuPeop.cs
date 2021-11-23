@@ -19,6 +19,12 @@ namespace Maket_PZ
             dateTimePicker.CustomFormat = "M.yyyy";
             dateTimePicker.MinDate = DateTime.Today;
             dateTimePicker.Value = DateTime.Today;
+
+            chart.ChartAreas[0].CursorX.IsUserEnabled = true;
+            chart.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+            chart.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+            chart.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
+
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)

@@ -44,7 +44,7 @@ namespace Maket_PZ
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.color_change = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -205,17 +205,19 @@ namespace Maket_PZ
             // 
             this.colorDialog.AllowFullOpen = false;
             // 
-            // button1
+            // color_change
             // 
-            this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(151, 290);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(22, 22);
-            this.button1.TabIndex = 14;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.color_change.BackColor = System.Drawing.Color.Red;
+            this.color_change.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("color_change.BackgroundImage")));
+            this.color_change.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.color_change.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.color_change.Location = new System.Drawing.Point(151, 290);
+            this.color_change.Margin = new System.Windows.Forms.Padding(0);
+            this.color_change.Name = "color_change";
+            this.color_change.Size = new System.Drawing.Size(22, 22);
+            this.color_change.TabIndex = 14;
+            this.color_change.UseVisualStyleBackColor = false;
+            this.color_change.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // MenuPeop
             // 
@@ -223,7 +225,7 @@ namespace Maket_PZ
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1076, 575);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.color_change);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.radioButtonYear);
@@ -261,6 +263,6 @@ namespace Maket_PZ
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ColorDialog colorDialog;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button color_change;
     }
 }
