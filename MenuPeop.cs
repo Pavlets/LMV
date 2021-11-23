@@ -147,5 +147,10 @@ namespace Maket_PZ
             if (chart_start)
                 ChartStart.PerformClick();
         }
+
+        private void CitySize_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = !(e.KeyCode == Keys.D0 || e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3 || e.KeyCode == Keys.D4 || e.KeyCode == Keys.D5 || e.KeyCode == Keys.D6 || e.KeyCode == Keys.D7 || e.KeyCode == Keys.D8 || e.KeyCode == Keys.D9 || e.KeyCode == Keys.Back || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right);
+        }
     }
 }

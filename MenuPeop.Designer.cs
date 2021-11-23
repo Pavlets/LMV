@@ -29,9 +29,9 @@ namespace Maket_PZ
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPeop));
             this.ChartStart = new System.Windows.Forms.Button();
             this.Factors = new System.Windows.Forms.Button();
@@ -120,25 +120,25 @@ namespace Maket_PZ
             this.chart.BorderlineColor = System.Drawing.Color.Black;
             this.chart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             this.chart.BorderlineWidth = 2;
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            chartArea1.AxisY.Minimum = 0D;
-            chartArea1.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea1);
+            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            chartArea3.AxisY.Minimum = 0D;
+            chartArea3.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea3);
             this.chart.Location = new System.Drawing.Point(205, 19);
             this.chart.Name = "chart";
             this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.Red;
-            series1.Font = new System.Drawing.Font("Franklin Gothic Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            series1.Name = "Series1";
-            series1.ToolTip = "Чисельність населення на #VALX рік буде\\nдорівнювати - #VAL";
-            this.chart.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Color = System.Drawing.Color.Red;
+            series3.Font = new System.Drawing.Font("Franklin Gothic Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            series3.Name = "Series1";
+            series3.ToolTip = "Чисельність населення на #VALX рік буде\\nдорівнювати - #VAL";
+            this.chart.Series.Add(series3);
             this.chart.Size = new System.Drawing.Size(851, 480);
             this.chart.TabIndex = 7;
-            title1.Font = new System.Drawing.Font("Constantia", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            title1.Name = "Title1";
-            title1.Text = "Динаміка чисельності населення міста";
-            this.chart.Titles.Add(title1);
+            title3.Font = new System.Drawing.Font("Constantia", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title3.Name = "Title1";
+            title3.Text = "Динаміка чисельності населення міста";
+            this.chart.Titles.Add(title3);
             // 
             // CitySize
             // 
@@ -150,6 +150,7 @@ namespace Maket_PZ
             this.CitySize.TabIndex = 8;
             this.CitySize.Text = "чис. населення";
             this.CitySize.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.CitySize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CitySize_KeyDown);
             this.CitySize.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // radioButtonMonth
