@@ -8,9 +8,13 @@ namespace Maket_PZ
     public partial class MenuPeop : Form
     {
         bool chart_start = false;
+        FactorsPeop g = new FactorsPeop();
+        bool factors_menu = false;
+
         public MenuPeop()
         {
             InitializeComponent();
+            Data.close_menu_p = false;
             ToolTip t = new ToolTip();
             t.SetToolTip(CitySize, "Чисельність населення на даний момент");
             t.SetToolTip(dateTimePicker, "Дата кінця побудови графіка");
@@ -24,26 +28,30 @@ namespace Maket_PZ
             chart.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
             chart.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
             chart.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
-
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
+            Data.close_menu_p = true;
+            g.Close();
             EnterMenu f = new EnterMenu();
             f.Show();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
-            FactorsPeop g = new FactorsPeop();
-            g.Show();
+            if (factors_menu)
+                g.WindowState = FormWindowState.Normal;
+            else
+            {
+                g.Show();
+                factors_menu = true;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,6 +64,7 @@ namespace Maket_PZ
                 chart.Series[0].Points.Clear();
 
                 int city_size = int.Parse(CitySize.Text);
+                int city_change = 0;
 
                 DateTime time_z = DateTime.Today;
                 time_z = time_z.AddDays(-time_z.Day);
@@ -75,13 +84,11 @@ namespace Maket_PZ
                         {
                             for (int jj = 0; jj <= Data.p_factor_count; jj++)
                                 if (Data.Factor_p[jj].v_up)
-                                {
-                                    city_size += Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
-                                }
+                                    city_change += Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
                                 else
-                                {
-                                    city_size -= Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
-                                }
+                                    city_change -= Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
+                            city_size += city_change;
+                            city_change = 0;
                             //MessageBox.Show(city_size.ToString());
                         }
                     }
@@ -99,13 +106,11 @@ namespace Maket_PZ
                         time_z = time_z.AddMonths(1);
                         for (int jj = 0; jj <= Data.p_factor_count; jj++)
                             if (Data.Factor_p[jj].v_up)
-                            {
-                                city_size += Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
-                            }
+                                city_change += Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
                             else
-                            {
-                                city_size -= Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
-                            }
+                                city_change -= Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
+                        city_size += city_change;
+                        city_change = 0;
                         //MessageBox.Show(city_size.ToString());
                     }
                 }
@@ -151,6 +156,12 @@ namespace Maket_PZ
         private void CitySize_KeyDown(object sender, KeyEventArgs e)
         {
             e.SuppressKeyPress = !(e.KeyCode == Keys.D0 || e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3 || e.KeyCode == Keys.D4 || e.KeyCode == Keys.D5 || e.KeyCode == Keys.D6 || e.KeyCode == Keys.D7 || e.KeyCode == Keys.D8 || e.KeyCode == Keys.D9 || e.KeyCode == Keys.Back || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right);
+        }
+
+        private void MenuPeop_Activated(object sender, EventArgs e)
+        {
+            if (factors_menu)
+                g.Close();
         }
     }
 }

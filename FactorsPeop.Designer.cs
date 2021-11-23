@@ -188,7 +188,7 @@ namespace Maket_PZ
             this.radioButton2.Location = new System.Drawing.Point(40, 236);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(50, 15, 0, 0);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(308, 33);
+            this.radioButton2.Size = new System.Drawing.Size(290, 32);
             this.radioButton2.TabIndex = 3;
             this.radioButton2.Text = "Зменшення населення";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -201,7 +201,7 @@ namespace Maket_PZ
             this.radioButton1.Location = new System.Drawing.Point(40, 188);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(50, 40, 0, 0);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(311, 33);
+            this.radioButton1.Size = new System.Drawing.Size(296, 32);
             this.radioButton1.TabIndex = 2;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Збільшення населення";
@@ -214,7 +214,7 @@ namespace Maket_PZ
             this.label2.Location = new System.Drawing.Point(40, 119);
             this.label2.Margin = new System.Windows.Forms.Padding(50, 60, 0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(219, 29);
+            this.label2.Size = new System.Drawing.Size(209, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "Значення впливу";
             // 
@@ -225,7 +225,7 @@ namespace Maket_PZ
             this.label1.Location = new System.Drawing.Point(40, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(50, 40, 10, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 29);
+            this.label1.Size = new System.Drawing.Size(156, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ім\'я фактора";
             // 
@@ -248,6 +248,7 @@ namespace Maket_PZ
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Налаштування факторів";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FactorsPeop_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

@@ -25,5 +25,7 @@ namespace Maket_PZ
         public static Factor_med[] Factor_med = new Factor_med[300];
         public static int p_factor_count;
         public static int med_factor_count;
+        public static bool close_menu_p = false;
+        public static bool close_menu_med = false;
     }
 }

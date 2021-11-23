@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Maket_PZ
@@ -51,12 +44,12 @@ namespace Maket_PZ
         {
             if (listBox1.SelectedIndex != -1)
             {
-                  for (int i = listBox1.SelectedIndex; i <= listBox1.Items.Count; i++)
-                  {
-                        Data.Factor_p[i].name = Data.Factor_p[i + 1].name;
-                        Data.Factor_p[i].value = Data.Factor_p[i + 1].value;
-                        Data.Factor_p[i].v_up = Data.Factor_p[i + 1].v_up;
-                  }
+                for (int i = listBox1.SelectedIndex; i <= listBox1.Items.Count; i++)
+                {
+                    Data.Factor_p[i].name = Data.Factor_p[i + 1].name;
+                    Data.Factor_p[i].value = Data.Factor_p[i + 1].value;
+                    Data.Factor_p[i].v_up = Data.Factor_p[i + 1].v_up;
+                }
                 listBox1.Items.RemoveAt(listBox1.SelectedIndex);
                 Data.p_factor_count--;
             }
@@ -102,6 +95,15 @@ namespace Maket_PZ
                     radioButton1.Checked = true;
                 else
                     radioButton2.Checked = true;
+            }
+        }
+
+        private void FactorsPeop_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!Data.close_menu_p)
+            {
+                e.Cancel = true;
+                this.WindowState = FormWindowState.Minimized;
             }
         }
     }

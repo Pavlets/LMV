@@ -95,5 +95,14 @@ namespace Maket_PZ
                 numericUpDown1.Value = Data.Factor_med[listBox1.SelectedIndex].die;
             }
         }
+
+        private void FactorsMed_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!Data.close_menu_med)
+            {
+                e.Cancel = true;
+                this.WindowState = FormWindowState.Minimized;
+            }
+        }
     }
 }

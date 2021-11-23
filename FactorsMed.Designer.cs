@@ -268,6 +268,7 @@ namespace Maket_PZ
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Налаштування факторів";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FactorsMed_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
