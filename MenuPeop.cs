@@ -7,12 +7,18 @@ namespace Maket_PZ
 {
     public partial class MenuPeop : Form
     {
+        bool chart_start = false;
         public MenuPeop()
         {
             InitializeComponent();
+            ToolTip t = new ToolTip();
+            t.SetToolTip(CitySize, "Чисельність населення на даний момент");
+            t.SetToolTip(dateTimePicker, "Дата кінця побудови графіка");
             CitySize.ForeColor = Color.Gray;
             CitySize.Font = new Font("Constantia", 10, FontStyle.Italic);
-            dateTimePicker.CustomFormat = "MMMM,yyyy";
+            dateTimePicker.CustomFormat = "M.yyyy";
+            dateTimePicker.MinDate = DateTime.Today;
+            dateTimePicker.Value = DateTime.Today;
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
@@ -36,8 +42,10 @@ namespace Maket_PZ
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (CitySize.Text != "чис. населення")
+            if (CitySize.Text != "чис. населення" && dateTimePicker.Value != DateTime.Today)
             {
+                chart_start = true;
+
                 chart.Series[0].XValueType = ChartValueType.Date;
                 chart.Series[0].Points.Clear();
 
@@ -96,6 +104,8 @@ namespace Maket_PZ
                     }
                 }
             }
+            else if (dateTimePicker.Value == DateTime.Today)
+                MessageBox.Show("Виберіть дату відмінну від сьогодні!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
                 MessageBox.Show("Введіть чисельність населення міста!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
@@ -105,7 +115,7 @@ namespace Maket_PZ
             if (CitySize.ForeColor == Color.Gray)
             {
                 CitySize.Text = "";
-                CitySize.Font = new Font("Constantia", 10, FontStyle.Regular);
+                CitySize.Font = new Font("Franklin Gothic", 10, FontStyle.Regular);
                 CitySize.ForeColor = Color.Black;
             }
         }
@@ -118,6 +128,18 @@ namespace Maket_PZ
                 CitySize.Font = new Font("Constantia", 10, FontStyle.Italic);
                 CitySize.Text = "чис. населення";
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            colorDialog.ShowDialog();
+            chart.Series[0].Color = colorDialog.Color;
+        }
+
+        private void radioButtonYear_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chart_start)
+                ChartStart.PerformClick();
         }
     }
 }
