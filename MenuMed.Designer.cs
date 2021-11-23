@@ -138,12 +138,12 @@ namespace Maket_PZ
             // CitySize
             // 
             this.CitySize.Font = new System.Drawing.Font("Constantia", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CitySize.Location = new System.Drawing.Point(19, 471);
+            this.CitySize.Location = new System.Drawing.Point(19, 208);
             this.CitySize.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.CitySize.Name = "CitySize";
             this.CitySize.Size = new System.Drawing.Size(166, 28);
             this.CitySize.TabIndex = 8;
-            this.CitySize.Text = "чис. населення";
+            this.CitySize.Text = "кількість днів";
             this.CitySize.Enter += new System.EventHandler(this.textBox1_Enter);
             this.CitySize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CitySize_KeyDown);
             this.CitySize.Leave += new System.EventHandler(this.textBox1_Leave);

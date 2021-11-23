@@ -62,7 +62,6 @@ namespace Maket_PZ
                 {
                     yValues[i] = Data.Factor_med[i].sick;
                     xValues[i] = Data.Factor_med[i].name;
-                    MessageBox.Show(xValues[i]);
                 }
                 diagram.Series[0].Points.DataBindXY(xValues, yValues);
             }
