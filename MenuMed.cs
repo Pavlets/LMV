@@ -64,10 +64,41 @@ namespace Maket_PZ
                 }
                 diagram.Series[0].Points.DataBindXY(xValues, yValues);
             }
-            else
+            else if (Chart_radio.Checked && Days_future.Text != "кількість днів")
             {
-
+                Chart.ChartAreas[0].AxisX.Interval = 1;
+                Chart.Series.Clear();
+                Chart.Series.Add("звільнені місця");
+                Chart.Series[0].ChartType = SeriesChartType.StackedColumn100;
+                Chart.Series[0].ToolTip = "Чисельність місць, що звільнилися на #VALX - #VALY";
+                int[] sick = new int[Data.med_factor_count + 1];
+                decimal[] day_die = new decimal[Data.med_factor_count + 1];
+                for (int i = 1; i <= Data.med_factor_count; i++)
+                {
+                    sick[i] = Data.Factor_med[i - 1].sick;
+                    day_die[i] = (Data.Factor_med[i - 1].sick * (Data.Factor_med[i - 1].die / 100)) / Data.Factor_med[i - 1].sick_time;
+                    MessageBox.Show(Data.Factor_med[i - 1].name + day_die[i]);
+                    Chart.Series.Add(Data.Factor_med[i - 1].name);
+                    Chart.Series[i].ChartType = SeriesChartType.StackedColumn100;
+                    Chart.Series[i].ToolTip = "Чисельність хворих #SERIESNAME на #VALX - #VALY";
+                }
+                for (int j = 1; j <= int.Parse(Days_future.Text); j++)
+                {
+                    for (int i = 1; i <= Data.med_factor_count; i++)
+                    {
+                        if (Data.Factor_med[i - 1].sick_time <= j)
+                        {
+                            sick[0] += sick[i];
+                            sick[i] = 0;
+                        }
+                        sick[i] = Decimal.ToInt32(sick[i] - day_die[i]);
+                        Chart.Series[i].Points.AddXY(j + "д.", sick[i]);
+                    }
+                    Chart.Series[0].Points.AddXY(j + "д.", sick[0]);
+                }
             }
+            else
+                MessageBox.Show("Виберіть кількість прогнозованих днів!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
@@ -112,16 +143,16 @@ namespace Maket_PZ
             if (Diagram_radio.Checked)
             {
                 ChartStart.Text = "Побудувати діаграму";
-                comboBox.Enabled = true;
-                comboBox.Visible = true;
+                Chart.Enabled = false;
+                Chart.Visible = false;
                 Days_future.Enabled = false;
                 Days_future.Visible = false;
             }
             else
             {
                 ChartStart.Text = "Побудувати графiк";
-                comboBox.Enabled = false;
-                comboBox.Visible = false;
+                Chart.Enabled = true;
+                Chart.Visible = true;
                 Days_future.Enabled = true;
                 Days_future.Visible = true;
             }
@@ -130,29 +161,65 @@ namespace Maket_PZ
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox.SelectedIndex == 0)
+            {
                 diagram.Palette = ChartColorPalette.BrightPastel;
+                Chart.Palette = ChartColorPalette.BrightPastel;
+            }
             else if (comboBox.SelectedIndex == 1)
+            {
                 diagram.Palette = ChartColorPalette.Bright;
+                Chart.Palette = ChartColorPalette.Bright;
+            }
             else if (comboBox.SelectedIndex == 2)
+            {
                 diagram.Palette = ChartColorPalette.Grayscale;
+                Chart.Palette = ChartColorPalette.Grayscale;
+            }
             else if (comboBox.SelectedIndex == 3)
+            {
                 diagram.Palette = ChartColorPalette.Excel;
+                Chart.Palette = ChartColorPalette.Excel;
+            }
             else if (comboBox.SelectedIndex == 4)
+            {
                 diagram.Palette = ChartColorPalette.Light;
+                Chart.Palette = ChartColorPalette.Light;
+            }
             else if (comboBox.SelectedIndex == 5)
+            {
                 diagram.Palette = ChartColorPalette.Pastel;
+                Chart.Palette = ChartColorPalette.Pastel;
+            }
             else if (comboBox.SelectedIndex == 6)
+            {
                 diagram.Palette = ChartColorPalette.EarthTones;
+                Chart.Palette = ChartColorPalette.EarthTones;
+            }
             else if (comboBox.SelectedIndex == 7)
+            {
                 diagram.Palette = ChartColorPalette.SemiTransparent;
+                Chart.Palette = ChartColorPalette.SemiTransparent;
+            }
             else if (comboBox.SelectedIndex == 8)
+            {
                 diagram.Palette = ChartColorPalette.Berry;
+                Chart.Palette = ChartColorPalette.Berry;
+            }
             else if (comboBox.SelectedIndex == 9)
+            {
                 diagram.Palette = ChartColorPalette.Chocolate;
+                Chart.Palette = ChartColorPalette.Chocolate;
+            }
             else if (comboBox.SelectedIndex == 10)
+            {
                 diagram.Palette = ChartColorPalette.Fire;
+                Chart.Palette = ChartColorPalette.Fire;
+            }
             else
+            {
                 diagram.Palette = ChartColorPalette.SeaGreen;
+                Chart.Palette = ChartColorPalette.SeaGreen;
+            }
         }
     }
 }
