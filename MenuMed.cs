@@ -82,19 +82,27 @@ namespace Maket_PZ
                     Chart.Series[i].ChartType = SeriesChartType.StackedColumn100;
                     Chart.Series[i].ToolTip = "Чисельність хворих #SERIESNAME на #VALX - #VALY";
                 }
+                int dif;
                 for (int j = 1; j <= int.Parse(Days_future.Text); j++)
                 {
+                    Chart.Series[0].Points.AddXY(j + "д.", sick[0]);
                     for (int i = 1; i <= Data.med_factor_count; i++)
                     {
-                        if (Data.Factor_med[i - 1].sick_time <= j)
+                        Chart.Series[i].Points.AddXY(j + "д.", sick[i]);
+                        if (Data.Factor_med[i - 1].sick_time == j)
                         {
                             sick[0] += sick[i];
                             sick[i] = 0;
                         }
-                        sick[i] = Decimal.ToInt32(sick[i] - day_die[i]);
-                        Chart.Series[i].Points.AddXY(j + "д.", sick[i]);
+                        else if (Data.Factor_med[i - 1].sick_time < j)
+                            sick[i] = 0;
+                        else
+                        {
+                            dif = sick[i] - Decimal.ToInt32(sick[i] - day_die[i]);
+                            sick[i] = Decimal.ToInt32(sick[i] - day_die[i]);
+                            sick[0] += dif;
+                        }
                     }
-                    Chart.Series[0].Points.AddXY(j + "д.", sick[0]);
                 }
             }
             else
