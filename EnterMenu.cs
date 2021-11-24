@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Maket_PZ
@@ -18,28 +11,26 @@ namespace Maket_PZ
             this.Show();
             label1.Focus();
         }
-
-
         private void button1_Click(object sender, EventArgs e)
         {
-            string login_pl = "ivanov"; // Зада
+            string login_pl = "ivanov";
             string login_med = "petrov";
             string pasword_pl = "parolpeop";
             string pasword_med = "parolmed";
 
             if (textBox1.Text == login_pl && textBox2.Text == pasword_pl)
             {
-                this.Hide();
-
                 MenuPeop f = new MenuPeop();
                 f.Show();
+
+                this.Hide();
             }
             else if (textBox1.Text == login_med && textBox2.Text == pasword_med)
             {
-                this.Hide();
-
                 MenuMed f = new MenuMed();
                 f.Show();
+
+                this.Hide();
             }
             else
             {

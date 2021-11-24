@@ -52,8 +52,8 @@ namespace Maket_PZ
                     Data.Factor_med[i].sick_time = Data.Factor_med[i + 1].sick_time;
                     Data.Factor_med[i].die = Data.Factor_med[i + 1].die;
                 }
-                Data.med_factor_count--;
                 listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+                Data.med_factor_count--;
             }
             else
                 MessageBox.Show("Фактор для видалення не обраний!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);

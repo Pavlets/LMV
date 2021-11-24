@@ -13,18 +13,11 @@ namespace Maket_PZ
         public MenuMed()
         {
             InitializeComponent();
+            Data.close_menu_med = false;
             ToolTip t = new ToolTip();
             t.SetToolTip(Days_future, "Кількість прогнозованих днів");
             Days_future.ForeColor = Color.Gray;
             Days_future.Font = new Font("Constantia", 10, FontStyle.Italic);
-            //dateTimePicker.CustomFormat = "M.yyyy";
-            //dateTimePicker.MinDate = DateTime.Today;
-            //dateTimePicker.Value = DateTime.Today;
-
-            diagram.ChartAreas[0].CursorX.IsUserEnabled = true;
-            diagram.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
-            diagram.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
-            diagram.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
@@ -70,17 +63,16 @@ namespace Maket_PZ
                 Chart.Series.Clear();
                 Chart.Series.Add("звільнені місця");
                 Chart.Series[0].ChartType = SeriesChartType.StackedColumn100;
-                Chart.Series[0].ToolTip = "Чисельність місць, що звільнилися на #VALX - #VALY";
+                Chart.Series[0].ToolTip = "Чисельність місць, що звільнилися на #VALX день - #VALY";
                 int[] sick = new int[Data.med_factor_count + 1];
                 decimal[] day_die = new decimal[Data.med_factor_count + 1];
                 for (int i = 1; i <= Data.med_factor_count; i++)
                 {
                     sick[i] = Data.Factor_med[i - 1].sick;
                     day_die[i] = (Data.Factor_med[i - 1].sick * (Data.Factor_med[i - 1].die / 100)) / Data.Factor_med[i - 1].sick_time;
-                    MessageBox.Show(Data.Factor_med[i - 1].name + day_die[i]);
                     Chart.Series.Add(Data.Factor_med[i - 1].name);
                     Chart.Series[i].ChartType = SeriesChartType.StackedColumn100;
-                    Chart.Series[i].ToolTip = "Чисельність хворих #SERIESNAME на #VALX - #VALY";
+                    Chart.Series[i].ToolTip = "Чисельність хворих #SERIESNAME на #VALX день - #VALY";
                 }
                 int dif;
                 for (int j = 1; j <= int.Parse(Days_future.Text); j++)
@@ -127,18 +119,6 @@ namespace Maket_PZ
                 Days_future.Font = new Font("Constantia", 10, FontStyle.Italic);
                 Days_future.Text = "кількість днів";
             }
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            colorDialog.ShowDialog();
-            diagram.Series[0].Color = colorDialog.Color;
-        }
-
-        private void radioButtonYear_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chart_start)
-                ChartStart.PerformClick();
         }
 
         private void CitySize_KeyDown(object sender, KeyEventArgs e)
@@ -228,6 +208,12 @@ namespace Maket_PZ
                 diagram.Palette = ChartColorPalette.SeaGreen;
                 Chart.Palette = ChartColorPalette.SeaGreen;
             }
+        }
+
+        private void MenuMed_Activated(object sender, EventArgs e)
+        {
+            if (factors_menu)
+                g.Close();
         }
     }
 }

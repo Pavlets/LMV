@@ -42,7 +42,6 @@ namespace Maket_PZ
             this.Exit = new System.Windows.Forms.Button();
             this.diagram = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Days_future = new System.Windows.Forms.TextBox();
-            this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.Diagram_radio = new System.Windows.Forms.RadioButton();
             this.Chart_radio = new System.Windows.Forms.RadioButton();
             this.comboBox = new System.Windows.Forms.ComboBox();
@@ -154,10 +153,6 @@ namespace Maket_PZ
             this.Days_future.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CitySize_KeyDown);
             this.Days_future.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
-            // colorDialog
-            // 
-            this.colorDialog.AllowFullOpen = false;
-            // 
             // Diagram_radio
             // 
             this.Diagram_radio.AutoSize = true;
@@ -231,11 +226,11 @@ namespace Maket_PZ
             this.Chart.Location = new System.Drawing.Point(205, 19);
             this.Chart.Name = "Chart";
             this.Chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.Chart.Size = new System.Drawing.Size(851, 480);
+            this.Chart.Size = new System.Drawing.Size(801, 480);
             this.Chart.TabIndex = 18;
             title2.Font = new System.Drawing.Font("Constantia", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             title2.Name = "Title1";
-            title2.Text = "Діаграма хворих міста";
+            title2.Text = "Прогнозування кількості хворих у місті";
             this.Chart.Titles.Add(title2);
             this.Chart.Visible = false;
             // 
@@ -262,6 +257,7 @@ namespace Maket_PZ
             this.Name = "MenuMed";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Системне меню";
+            this.Activated += new System.EventHandler(this.MenuMed_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.diagram)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chart)).EndInit();
@@ -276,7 +272,6 @@ namespace Maket_PZ
         private System.Windows.Forms.Button Exit;
         private System.Windows.Forms.DataVisualization.Charting.Chart diagram;
         private System.Windows.Forms.TextBox Days_future;
-        private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.RadioButton Diagram_radio;
         private System.Windows.Forms.RadioButton Chart_radio;
         private System.Windows.Forms.ComboBox comboBox;

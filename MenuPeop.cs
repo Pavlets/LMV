@@ -10,7 +10,6 @@ namespace Maket_PZ
         bool chart_start = false;
         FactorsPeop g = new FactorsPeop();
         bool factors_menu = false;
-
         public MenuPeop()
         {
             InitializeComponent();
@@ -89,7 +88,6 @@ namespace Maket_PZ
                                     city_change -= Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
                             city_size += city_change;
                             city_change = 0;
-                            //MessageBox.Show(city_size.ToString());
                         }
                     }
                 }
@@ -111,7 +109,6 @@ namespace Maket_PZ
                                 city_change -= Decimal.ToInt32(city_size * (Data.Factor_p[jj].value / 100));
                         city_size += city_change;
                         city_change = 0;
-                        //MessageBox.Show(city_size.ToString());
                     }
                 }
             }
