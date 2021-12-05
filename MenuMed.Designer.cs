@@ -226,7 +226,7 @@ namespace Maket_PZ
             this.Chart.Location = new System.Drawing.Point(205, 19);
             this.Chart.Name = "Chart";
             this.Chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.Chart.Size = new System.Drawing.Size(801, 480);
+            this.Chart.Size = new System.Drawing.Size(851, 480);
             this.Chart.TabIndex = 18;
             title2.Font = new System.Drawing.Font("Constantia", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             title2.Name = "Title1";

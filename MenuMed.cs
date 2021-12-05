@@ -7,7 +7,6 @@ namespace Maket_PZ
 {
     public partial class MenuMed : Form
     {
-        bool chart_start = false;
         FactorsMed g = new FactorsMed();
         bool factors_menu = false;
         public MenuMed()
